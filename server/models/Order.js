@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
@@ -17,4 +17,26 @@ const orderSchema = new Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+export default Order;
+
+// ORIGINAL CODE
+// const mongoose = require('mongoose');
+
+// const { Schema } = mongoose;
+
+// const orderSchema = new Schema({
+//   purchaseDate: {
+//     type: Date,
+//     default: Date.now
+//   },
+//   products: [
+//     {
+//       type: Schema.Types.ObjectId,
+//       ref: 'Product'
+//     }
+//   ]
+// });
+
+// const Order = mongoose.model('Order', orderSchema);
+
+// module.exports = Order;

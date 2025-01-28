@@ -63,25 +63,25 @@ This application is deployed using [Render](https:FILL).
 
 ## Technologies Employed
 **Frontend:**  
-   ![React](https://img.shields.io/badge/-React-20232A?logo=react&logoColor=61DAFB) 
+   <!-- ![React](https://img.shields.io/badge/-React-20232A?logo=react&logoColor=61DAFB) 
    ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)  
    ![Apollo Client](https://img.shields.io/badge/-Apollo%20Client-311C87?logo=apollographql&logoColor=white) 
-   ![React Bootstrap](https://img.shields.io/badge/-React%20Bootstrap-563D7C?logo=bootstrap&logoColor=white)
+   ![React Bootstrap](https://img.shields.io/badge/-React%20Bootstrap-563D7C?logo=bootstrap&logoColor=white) -->
 
 **Backend:**  
-   ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white) 
+   <!-- ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white) 
    ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white)  
    ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white) 
    ![Mongoose](https://img.shields.io/badge/-Mongoose-880000?logo=mongodb&logoColor=white)   
    ![Apollo Server](https://img.shields.io/badge/-Apollo%20Server-311C87?logo=apollographql&logoColor=white) 
-   ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?logo=graphql&logoColor=white)
+   ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?logo=graphql&logoColor=white) -->
 
 **Authentication:**  
-   ![JSON Web Tokens](https://img.shields.io/badge/-JSON%20Web%20Tokens-000000?logo=jsonwebtokens&logoColor=white)
+   <!-- ![JSON Web Tokens](https://img.shields.io/badge/-JSON%20Web%20Tokens-000000?logo=jsonwebtokens&logoColor=white) -->
 
 **Build:**  
-   ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white) 
-   ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+   <!-- ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white) 
+   ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) -->
 
 ## Future Development
 I do not plan to make any further developments on this project outside of using it as a learning and resource model.

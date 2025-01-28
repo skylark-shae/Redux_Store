@@ -1,3 +1,4 @@
+// Define the typeDefs
 const typeDefs = `
   type Category {
     _id: ID
@@ -55,4 +56,4 @@ const typeDefs = `
   }
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

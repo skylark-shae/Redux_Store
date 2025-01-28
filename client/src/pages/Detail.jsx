@@ -1,98 +1,68 @@
+// Import necessary libraries and components
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { useDispatch, useSelector } from 'react-redux';
 import Cart from '../components/Cart';
-import { useStoreContext } from '../utils/GlobalState';
-import {
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
-  UPDATE_PRODUCTS,
-} from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
+import { updateProducts } from '../store/slices/productSlice';
+import { addToCart, removeFromCart, updateCartQuantity } from '../store/slices/cartSlice';
 import spinner from '../assets/spinner.gif';
 
 function Detail() {
-  const [state, dispatch] = useStoreContext();
+  // Redux dispatch hook for updating state
+  const dispatch = useDispatch();
+  
+  // Retrieve the product ID from URL parameters
   const { id } = useParams();
 
+  // Local state to manage the currently viewed product
   const [currentProduct, setCurrentProduct] = useState({});
-
+  
+  // Access Redux store state for products and cart
+  const { products } = useSelector(state => state.products);
+  const { cart } = useSelector(state => state.cart);
+  
+  // Apollo query to fetch product data
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products, cart } = state;
-
+  // useEffect to handle product data loading and state updates
   useEffect(() => {
-    // already in global store
+    // Check if products are already loaded in the Redux store
     if (products.length) {
-      const product = products.find((product) => product._id === id);
-
-      const item = {
-        image: product.image,
-        name: product.name,
-        _id: product._id,
-        price: product.price,
-        quantity: product.quantity,
-      };
-      
-      setCurrentProduct(item);
-    }
-    // retrieved from server
+      setCurrentProduct(products.find(product => product._id === id));
+    } 
+    // If data is fetched from the server, update Redux store and IndexedDB
     else if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
-
+      dispatch(updateProducts(data.products));
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
       });
     }
-    // get cache from idb
-    else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: indexedProducts,
-        });
-      });
-    }
   }, [products, data, loading, dispatch, id]);
 
-  const addToCart = () => {
+  // Handle adding the current product to the cart
+  const handleAddToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
     if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
+      dispatch(updateCartQuantity({
         _id: id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      }));
     } else {
-      dispatch({
-        type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1 },
-      });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      dispatch(addToCart({ ...currentProduct, purchaseQuantity: 1 }));
     }
   };
 
-  const removeFromCart = () => {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      _id: currentProduct._id,
-    });
-
-    idbPromise('cart', 'delete', { ...currentProduct });
+  // Handle removing the current product from the cart
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(currentProduct._id));
   };
 
   return (
     <>
+      {/* Render product details if available */}
       {currentProduct && cart ? (
         <div className="container my-1">
           <Link to="/">← Back to Products</Link>
@@ -103,10 +73,10 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
+            <button onClick={handleAddToCart}>Add to Cart</button>
             <button
               disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
+              onClick={handleRemoveFromCart}
             >
               Remove from Cart
             </button>
@@ -118,7 +88,11 @@ function Detail() {
           />
         </div>
       ) : null}
+      
+      {/* Display loading spinner if data is being fetched */}
       {loading ? <img src={spinner} alt="loading" /> : null}
+      
+      {/* Render the Cart component */}
       <Cart />
     </>
   );
