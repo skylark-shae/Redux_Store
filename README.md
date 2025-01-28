@@ -1,4 +1,4 @@
-# [ReduxRefactor](https://LINK)
+# [ReduxRefactor](https://redux-store-2rvq.onrender.com/)
 Full-stack e-commerce platform refactored from React API to Redux.
 
 ## Description
@@ -20,8 +20,12 @@ Full-stack e-commerce platform refactored from React API to Redux.
 
 ## Usage
 **Features**
-- 
--
+- User authentication
+- Product search
+- Edit items in cart
+- Add and remove products from cart
+- Stripe checkout (Use [test cards](https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm) for test transaction.)
+- Order history
 
 **User Story:**
 ```md
@@ -46,42 +50,34 @@ THEN I find that the app uses Redux instead of the Context API
 ```
 
 ## Installation
-This application is deployed using [Render](https:FILL).
+This application is deployed using [Render](https://redux-store-2rvq.onrender.com/).
 
 ## Demonstration
    <div style="margin-left: 40px;">
-   Demonstration of the application's desktop interface:<br/>
-   <img src=".gif" alt="Desktop demonstration video" width="550"/>
+   Image of the application's storefront page:<br/>
+   <img src="./assets/storefront.png" alt="Desktop demonstration video" width="550"/>
    </div>
    <br/>
 
    <div style="margin-left: 40px;">
-   Image of the application's desktop interface:<br/>
-   <img src=".png" alt="Screenshot" width="550"/>
+   Image of the application's purchase page:<br/>
+   <img src="./assets/purchase.png" alt="Screenshot" width="550"/>
    </div>
    <br/>
 
 ## Technologies Employed
 **Frontend:**  
-   <!-- ![React](https://img.shields.io/badge/-React-20232A?logo=react&logoColor=61DAFB) 
-   ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)  
+   ![React](https://img.shields.io/badge/-React-20232A?logo=react&logoColor=61DAFB) 
    ![Apollo Client](https://img.shields.io/badge/-Apollo%20Client-311C87?logo=apollographql&logoColor=white) 
-   ![React Bootstrap](https://img.shields.io/badge/-React%20Bootstrap-563D7C?logo=bootstrap&logoColor=white) -->
 
 **Backend:**  
-   <!-- ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white) 
-   ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white)  
    ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white) 
    ![Mongoose](https://img.shields.io/badge/-Mongoose-880000?logo=mongodb&logoColor=white)   
    ![Apollo Server](https://img.shields.io/badge/-Apollo%20Server-311C87?logo=apollographql&logoColor=white) 
-   ![GraphQL](https://img.shields.io/badge/-GraphQL-E10098?logo=graphql&logoColor=white) -->
 
 **Authentication:**  
-   <!-- ![JSON Web Tokens](https://img.shields.io/badge/-JSON%20Web%20Tokens-000000?logo=jsonwebtokens&logoColor=white) -->
+   ![JSON Web Tokens](https://img.shields.io/badge/-JSON%20Web%20Tokens-000000?logo=jsonwebtokens&logoColor=white)
 
-**Build:**  
-   <!-- ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white) 
-   ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white) -->
 
 ## Future Development
 I do not plan to make any further developments on this project outside of using it as a learning and resource model.
